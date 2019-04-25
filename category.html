@@ -1,0 +1,53 @@
+<html>
+<body> 
+<body style="background-color:powderblue;">
+<center>
+<br>
+<h3>Category:<select id="car" onchange="ChangeCarList()"> 
+  <option value="PC Related"></option>
+  <option value="PC Related">PC Related</option>
+  <option value="Networking">Networking</option> 
+  <option value="App related">App related</option>
+  <option value="Software">Software</option> 
+  <option value="Other">Other</option> 
+</select>
+<br>
+<br> 
+<h3>Issuse:<select id="carmodel"></select> 
+<script>
+var carsAndModels = {};
+carsAndModels['PC Related']= ['','Application that wont install', 'Application run slowly', 'Hardeware faliure'];
+carsAndModels['Networking'] = ['','Network Slow', 'Firewall Restriction', 'Duplicate IP Address'];
+carsAndModels['App related'] = ['','Low internal Storage', 'Battery Drain', 'Image Gallery Loading Slow'];
+carsAndModels['Software'] = ['','Inconsistent Processing', 'Your System Keeps Restarting', 'Computer is Slow'];
+carsAndModels['Other'] = ['','Movie', 'Swigy', 'Attendance'];
+
+function ChangeCarList()
+{
+    var carList = document.getElementById("car");
+    var modelList = document.getElementById("carmodel");
+    var selCar = carList.options[carList.selectedIndex].value;
+    while (modelList.options.length) 
+    {
+        modelList.remove(0);
+    }
+    var cars = carsAndModels[selCar];
+    if (cars)
+    {
+    var i;
+        for (i = 0; i < cars.length; i++)
+        {
+            var car = new Option(cars[i], i);
+            modelList.options.add(car);
+        }
+    }
+} 
+</script>
+<br>
+<br>
+Description: <input type="text" name="LastName" value=""><br>
+<br>
+<input type="submit" value="Submit">
+</body>
+</html>
+
